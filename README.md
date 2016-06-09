@@ -7,7 +7,7 @@ Quickly generate a rectangle or oval with specific dimensions and positioning.
 ## Features
 
 - If you have a layer selected, it will automatically set the initial `x` and `y` values to those of the selected layer.
-- It supports Sketch’s differently-sized-border-radii syntax of, for example, `4/4/0/0/` for top left `4`, top right `4`, bottom right `0`, bottom left `0`.
+- It supports Sketch’s differently-sized-border-radii syntax of, for example, `4/4/0/0` for top left `4`, top right `4`, bottom right `0`, bottom left `0`.
 
 ## Install
 
