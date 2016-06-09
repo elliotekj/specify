@@ -1,0 +1,27 @@
+{
+  "name" : "Specify",
+  "identifier" : "com.casualnotebook.specify",
+  "description" : "Generate a shape with specific dimensions.",
+  "version" : "1.0",
+  "author" : "Elliot Jackson",
+  "authorEmail" : "elliotekj@gmail.com",
+  "homepage": "https://github.com/elliotekj/specify",
+  "compatibleVersion": "3.8",
+  "bundleVersion": "1",
+  "commands" : [
+    {
+      "script" : "specify-rectangle.cocoascript",
+      "handler" : "onRun",
+      "shortcut" : "ctrl shift r",
+      "name" : "Specify Rectangle",
+      "identifier" : "specifyRectangle"
+    },
+    {
+      "script" : "specify-oval.cocoascript",
+      "handler" : "onRun",
+      "shortcut" : "ctrl shift o",
+      "name" : "Specify Oval",
+      "identifier" : "specifyOval"
+    }
+  ]
+}

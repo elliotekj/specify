@@ -1,0 +1,49 @@
+@import "main.js"
+
+function onRun(context) {
+  // Get all the things
+  initPlugin(context);
+
+  // Load the window
+  var window = createRectangleWindow();
+  var alert = window[0];
+
+  // When “Ok” is clicked
+  var response = alert.runModal()
+  if (response == "1000") {
+    // Get the user’s values
+    // The replace strips any non-numeric (and non-slash for radius) characters
+    // e.g. `px`
+    var width = widthTextfield.stringValue().replace(/[^0-9.,]/g, '');
+    var height = heightTextfield.stringValue().replace(/[^0-9.,]/g, '');
+    var x = xTextfield.stringValue().replace(/[^0-9.,]/g, '');
+    var y = yTextfield.stringValue().replace(/[^0-9.,]/g, '');
+    var radius = radiusTextfield.stringValue().replace(/[^0-9.,./]/g, '');
+
+    // Draw the rectangle
+    var rect = MSRectangleShape.alloc().init();
+    rect.frame = MSRect.rectWithRect(NSMakeRect(x, y, width, height));
+
+    // If the radius contains different values for different corners, use them
+    // Otherwise check if it is not equal to 0 and set it
+    if (radius.indexOf('/') > -1) {
+      rect.setCornerRadiusFromComponents(radius);
+    } else if (radius !== 0) {
+      rect.cornerRadiusFloat = radius;
+    }
+
+    // Place it in the document
+    var shapeGroup = MSShapeGroup.shapeWithPath(rect);
+    shapeGroup.style().addStylePartOfType(0)
+
+    // If an artboard is selected place it there otherwise put it in the page
+    if (artboard) {
+      artboard.addLayers([shapeGroup]);
+    } else {
+      page.addLayers([shapeGroup]);
+    }
+
+    // Select the created shape
+    shapeGroup.setIsSelected(true);
+  }
+}
